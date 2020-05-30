@@ -79,7 +79,7 @@ api
       document.querySelector("#quiz").remove();
       document.querySelector(
         "#result"
-      ).innerHTML = `<h1> ${right}/${wrong}</h2>`;
+      ).innerHTML = `<h1> ${right}/${total}</h2>`;
     }, 10000 * questionNum);
 
     // GET SELECTED
