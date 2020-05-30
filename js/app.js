@@ -89,5 +89,6 @@ document.querySelector("form").addEventListener("submit", (e) => {
   let category = +document.querySelector("#category").value;
   sessionStorage.setItem("Questions", inputNumber);
   sessionStorage.setItem("category", category);
+  window.location.href = "/quiz.html";
   e.preventDefault();
 });
