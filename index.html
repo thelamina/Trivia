@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg"></div>
+    <div class="bc"></div>
+    <nav class="container">
+      <div class="logo">
+        <a href=""><span>Smart</span> Trivia</a>
+      </div>
+      <ul>
+        <li>Home</li>
+        <li>Board</li>
+        <li>GitHub</li>
+      </ul>
+      <div class="burger">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </nav>
+    <section class="homepage">
+      <div class="container">
+        <h1 class="heading">Smart Trivia</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
+          magnam consequatur in odio velit, voluptate.
+        </p>
+        <p>Enter preferred number of questions</p>
+        <form method="POST" action="quiz.html">
+          <input type="" id="inputNumber" class="input" />
+          <select name="category" id="category" class="input"> </select>
+          <button type="submit" class="btn" id="btnSubmit">Enter Trivia</button>
+        </form>
+      </div>
+    </section>
+    <script src="js/trivia.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
