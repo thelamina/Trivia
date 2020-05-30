@@ -64,14 +64,14 @@ a {
 /* INPUT */
 .input {
   background: #051c3300;
-  display: block;
+  display: inline-block;
   width: 300px;
   color: #b9b7b7;
   font-weight: 100;
   padding: 12px;
   border: 1px solid #848485;
   font-size: 18px;
-  margin: 10px 0;
+  margin: 10px 20px 0 0;
 }
 
 /* BUTTON */
@@ -96,11 +96,48 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  /* position: relative; */
   /* background: #051c33bb; */
 }
-
-nav ul {
+.nav-items {
   display: none;
+}
+.nav-active {
+  list-style: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #050505e0;
+  width: 100vw;
+  animation: animate-nav 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+@keyframes animate-nav {
+  from {
+    transform: translateY(-100vh);
+  }
+  to {
+    transform: translateY(0vh);
+  }
+}
+
+nav ul li {
+  padding: 20px;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+nav ul li a {
+  color: #ffffff;
+  font-size: 24px;
+}
+
+nav ul li:hover {
+  transform: scale(1.3);
 }
 
 .logo {
@@ -108,6 +145,7 @@ nav ul {
   font-weight: 900;
   padding: 20px 0;
   color: #ffffff;
+  z-index: 2;
 }
 .logo span {
   text-transform: uppercase;
@@ -123,14 +161,23 @@ nav ul {
 /* BURGER */
 .burger {
   cursor: pointer;
+  z-index: 2;
 }
 .line {
   width: 24px;
-  height: 1px;
+  height: 2px;
   display: block;
   padding: 0 10px;
   margin: 5px;
   background: #ffffff;
+  transition: .2s;
+}
+
+.hide {
+  display: none;
+}
+.min{
+  height: 3px;
 }
 /* END OF BURGER */
 
@@ -167,6 +214,12 @@ nav ul {
   transition: background 0.3s, transform 0.3s;
 }
 
+option {
+  background: #8e8d90;
+  border: none;
+  color: #130730;
+  line-height: 40px;
+}
 .options li:hover {
   background: #858585;
   transform: scale(1.01);
@@ -183,7 +236,7 @@ nav ul {
 .timer {
   position: fixed;
   text-align: center;
-  top: 20px;
+  top: 70px;
   width: 100vw;
 }
 
@@ -201,4 +254,14 @@ nav ul {
   font-size: 60px;
   padding: 70px 60px;
   border-radius: 50%;
+}
+
+
+.time-alloted{
+  color: #ffffff;
+  padding: 10px 0;
+  margin: 10px 0;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 800;
 }

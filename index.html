@@ -13,10 +13,10 @@
       <div class="logo">
         <a href="index.html"><span>Smart</span> Trivia</a>
       </div>
-      <ul>
-        <li>Home</li>
-        <li>Board</li>
-        <li>GitHub</li>
+      <ul class="nav-items">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html">Board</a></li>
+        <li><a href="index.html">GitHub</a></li>
       </ul>
       <div class="burger">
         <span class="line"></span>
@@ -31,10 +31,26 @@
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
           magnam consequatur in odio velit, voluptate.
         </p>
-        <p>Enter preferred number of questions</p>
+        <p>Carefully customize your trivia</p>
         <form method="POST" action="quiz.html">
-          <input type="" id="inputNumber" class="input" />
+          <!-- <input type="" id="inputNumber" class="input" /> -->
+          <select name="number" id="inputNumber" class="input">
+            <option value="">Select number of questions</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+            <option value="50">50</option>
+          </select>
           <select name="category" id="category" class="input"> </select>
+          <select name="difficulty" id="difficulty" class="input">
+            <option value="">Select difficulty</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+          <p class="time-alloted"></p>
           <button type="submit" class="btn" id="btnSubmit">Enter Trivia</button>
         </form>
       </div>

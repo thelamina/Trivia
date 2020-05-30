@@ -8,6 +8,7 @@ const api = new Trivia();
 
 const questionNum = +sessionStorage.getItem("Questions");
 const categoryNum = +sessionStorage.getItem("category");
+const difficulty = sessionStorage.getItem("difficulty");
 
 // GET CATEGORY
 api
@@ -29,7 +30,7 @@ let next = 1;
 
 api
   .get(
-    `https://opentdb.com/api.php?amount=${questionNum}&category=${categoryNum}&difficulty=easy&type=multiple`
+    `https://opentdb.com/api.php?amount=${questionNum}&category=${categoryNum}&difficulty=${difficulty}&type=multiple`
   )
   .then((data) => {
     let output = "You're up";
@@ -80,7 +81,7 @@ api
       document.querySelector(
         "#result"
       ).innerHTML = `<h1> ${right}/${total}</h2>`;
-    }, 10000 * questionNum);
+    }, 30000 * questionNum);
 
     // GET SELECTED
 
@@ -89,12 +90,36 @@ api
   .catch((err) => console.log(err));
 
 // GET SELECTED
+
 document.querySelector("form").addEventListener("submit", (e) => {
   let inputNumber = +document.querySelector("#inputNumber").value;
   let category = +document.querySelector("#category").value;
+  let difficulty = +document.querySelector("#difficulty").value;
   sessionStorage.setItem("Questions", inputNumber);
   sessionStorage.setItem("category", category);
+  sessionStorage.setItem("difficulty", difficulty);
   window.location.href = "/quiz.html";
 
   e.preventDefault();
+});
+
+// NAVIGATION
+const burger = document.querySelector(".burger");
+const navItems = document.querySelector(".nav-items");
+const line1 = document.querySelector(".line:nth-child(1)");
+const line2 = document.querySelector(".line:nth-child(2)");
+const line3 = document.querySelector(".line:nth-child(3)");
+
+burger.addEventListener("click", (e) => {
+  navItems.classList.toggle("nav-active");
+  line1.classList.toggle("hide");
+  line2.classList.toggle("min");
+  line3.classList.toggle("hide");
+  e.preventDefault();
+});
+
+document.querySelector("#inputNumber").addEventListener("blur", () => {
+  document.querySelector(".time-alloted").textContent = `You have ${Math.floor(
+    (document.querySelector("#inputNumber").value * 30000) / 1000 / 60
+  )} minute(s) to take this quiz`;
 });
