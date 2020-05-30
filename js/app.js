@@ -24,7 +24,8 @@ api
 // GET QUESTIONS
 let right = 0;
 let wrong = 0;
-let total;
+let total = questionNum;
+let next = 1;
 
 api
   .get(
@@ -32,7 +33,6 @@ api
   )
   .then((data) => {
     let output = "You're up";
-    let next = 1;
     let opt = [];
     data.results.forEach((element) => {
       let options = "";
@@ -49,7 +49,6 @@ api
       opt.forEach((prop) => {
         options += `<li>${prop}</li>`;
       });
-
       //structure of question
       output += `<div class="question" id="${next}">
                   <h2 class="title">
@@ -76,6 +75,12 @@ api
       });
     });
     document.querySelector("#quiz").innerHTML = output;
+    setTimeout(() => {
+      document.querySelector("#quiz").remove();
+      document.querySelector(
+        "#result"
+      ).innerHTML = `<h1> ${right}/${wrong}</h2>`;
+    }, 10000 * questionNum);
 
     // GET SELECTED
 
@@ -90,5 +95,6 @@ document.querySelector("form").addEventListener("submit", (e) => {
   sessionStorage.setItem("Questions", inputNumber);
   sessionStorage.setItem("category", category);
   window.location.href = "/quiz.html";
+
   e.preventDefault();
 });

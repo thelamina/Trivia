@@ -66,7 +66,7 @@ a {
   background: #051c3300;
   display: block;
   width: 300px;
-  color: #8a8484;
+  color: #b9b7b7;
   font-weight: 100;
   padding: 12px;
   border: 1px solid #848485;
@@ -171,7 +171,9 @@ nav ul {
   background: #858585;
   transform: scale(1.01);
 }
+
 /* END OF OPTIONS */
+
 .selected {
   transition: 0.4s;
   background: #130730;
@@ -183,4 +185,20 @@ nav ul {
   text-align: center;
   top: 20px;
   width: 100vw;
+}
+
+/* RESULT */
+.result {
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.result h1 {
+  background: #130730;
+  /* border: 3px solid; */
+  font-size: 64px;
+  padding: 100px 40px;
+  border-radius: 50%;
 }
