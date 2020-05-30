@@ -75,6 +75,7 @@ api
         }
       });
     });
+    document.querySelector('#'+next).innerHTML =
     document.querySelector("#quiz").innerHTML = output;
     setTimeout(() => {
       document.querySelector("#quiz").remove();

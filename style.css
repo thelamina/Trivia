@@ -53,6 +53,7 @@ p {
   position: fixed;
   width: 100vw;
   height: 100vh;
+  margin: auto;
   z-index: -1;
 }
 /* END OF BACKGROUND */
@@ -113,9 +114,10 @@ nav {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #050505e0;
+  background: #050505ee;
   width: 100vw;
-  animation: animate-nav 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation: animate-nav 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.5);
+  z-index: 1;
 }
 @keyframes animate-nav {
   from {
@@ -170,13 +172,13 @@ nav ul li:hover {
   padding: 0 10px;
   margin: 5px;
   background: #ffffff;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .hide {
   display: none;
 }
-.min{
+.min {
   height: 3px;
 }
 /* END OF BURGER */
@@ -236,32 +238,51 @@ option {
 .timer {
   position: fixed;
   text-align: center;
-  top: 70px;
+  top: 90px;
   width: 100vw;
 }
 
 /* RESULT */
 .result {
   height: 75vh;
+  /* position: fixed; */
   display: flex;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
 }
 
 .result h1 {
   background: #130730;
-  /* border: 3px solid; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 60px;
-  padding: 70px 60px;
+  text-align: center;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
 }
 
-
-.time-alloted{
+.time-alloted {
   color: #ffffff;
   padding: 10px 0;
   margin: 10px 0;
   font-size: 16px;
   text-transform: uppercase;
   font-weight: 800;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  right: 0;
+  z-index: 0;
+}
+
+footer p,
+footer a {
+  text-align: center;
+  font-size: 16px;
+  color: #ffffff;
 }
