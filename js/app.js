@@ -50,6 +50,7 @@ api
       opt.forEach((prop) => {
         options += `<li>${prop}</li>`;
       });
+
       //structure of question
       output += `<div class="question" id="${next}">
                   <h2 class="title">
@@ -60,6 +61,8 @@ api
                   </ul>
                   <a href="#${++next}" class="btn">Next</a>
                 </div>`;
+
+      //Pick answer
       document.body.addEventListener("click", (e) => {
         if (e.target.parentElement.className === "options") {
           document.querySelectorAll("li").forEach((li) => {
@@ -75,14 +78,30 @@ api
         }
       });
     });
-    document.querySelector('#'+next).innerHTML =
-    document.querySelector("#quiz").innerHTML = output;
-    setTimeout(() => {
-      document.querySelector("#quiz").remove();
-      document.querySelector(
-        "#result"
-      ).innerHTML = `<h1> ${right}/${total}</h2>`;
-    }, 30000 * questionNum);
+
+    document.querySelector("#" + next).innerHTML = document.querySelector(
+      "#quiz"
+    ).innerHTML = output;
+
+    // let time = (questionNum * 30000) / 1000;
+    // let countDown = new Date().setMinutes(12);
+    // let now = new Date().setMinutes(00);
+
+    // let clock = setInterval(() => {
+    //   let diff = countDown - now;
+    //   let minute = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    //   let second = Math.floor((diff % (1000 * 60)) / 1000);
+    //   timer = `${minute}:${second}`;
+    //   console.log(timer);
+    // }, 1000);
+
+    // setTimeout(() => {
+    //   clearInterval(clock);
+    //   document.querySelector("#quiz").remove();
+    //   document.querySelector(
+    //     "#result"
+    //   ).innerHTML = `<h1> ${right}/${total}</h2>`;
+    // }, 30000 * questionNum);
 
     // GET SELECTED
 
@@ -95,7 +114,7 @@ api
 document.querySelector("form").addEventListener("submit", (e) => {
   let inputNumber = +document.querySelector("#inputNumber").value;
   let category = +document.querySelector("#category").value;
-  let difficulty = +document.querySelector("#difficulty").value;
+  let difficulty = document.querySelector("#difficulty").value;
   sessionStorage.setItem("Questions", inputNumber);
   sessionStorage.setItem("category", category);
   sessionStorage.setItem("difficulty", difficulty);
@@ -124,3 +143,23 @@ document.querySelector("#inputNumber").addEventListener("blur", () => {
     (document.querySelector("#inputNumber").value * 30000) / 1000 / 60
   )} minute(s) to take this quiz`;
 });
+
+
+
+// let time = (questionNum * 30000) / 1000;
+// let countDown = new Date().setMinutes(12);
+// let now = new Date().setMinutes(00);
+
+// let clock = setInterval(() => {
+//   let diff = countDown - now;
+//   let minute = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+//   let second = Math.floor((diff % (1000 * 60)) / 1000);
+//   timer = `${minute}:${second--}`;
+//   console.log(timer);
+// }, 1000);
+
+// setTimeout(() => {
+//   clearInterval(clock);
+//   document.querySelector("#quiz").remove();
+//   document.querySelector("#result").innerHTML = `<h1> ${right}/${total}</h2>`;
+// }, 2000);
