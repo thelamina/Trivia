@@ -86,7 +86,7 @@ api
       let timer = duration;
       let minutes;
       let seconds;
-      setInterval(function () {
+      let na = setInterval(function () {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
 
@@ -96,7 +96,8 @@ api
         document.querySelector(".timer").innerHTML = minutes + ":" + seconds;
 
         if (--timer < 0) {
-          timer = duration;
+          document.querySelector(".timer").innerHTML = "Time up";
+          clearInterval(na);
         }
       }, 1000);
     }
@@ -109,9 +110,7 @@ api
       document.querySelector(
         "#result"
       ).innerHTML = `<h1> ${right}/${total}</h2>`;
-    }, 30000 * questionNum);
-
-    7;
+    }, time * 1000);
 
     // RELOAD RESET
     if (performance.navigation.type === 1) {
