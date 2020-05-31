@@ -70,11 +70,24 @@ api
             li.classList.remove("selected");
           });
           e.target.className = "selected";
+          // let eval;
 
           if (e.target.textContent === element.correct_answer) {
-            right++;
+            // while (
+            //   right <= +e.target.parentElement.parentElement.getAttribute("id")
+            // ) {
+            if (
+              right < +e.target.parentElement.parentElement.getAttribute("id")
+            ) {
+              right++;
+            }
+            // }
           } else {
-            wrong++;
+            if (
+              wrong < +e.target.parentElement.parentElement.getAttribute("id")
+            ) {
+              wrong++;
+            }
           }
         }
       });
