@@ -82,6 +82,20 @@ api
 
     document.querySelector("#quiz").innerHTML = output;
 
+    // SUBMIT ACTION
+    const submit = document.getElementById(`${total}`).querySelector("a");
+    submit.innerText = "submit";
+    submit.classList.add("submit");
+
+    submit.addEventListener("click", () => {
+      document.querySelector(".timer").remove();
+      document.querySelector("#quiz").remove();
+      document.querySelector(
+        "#result"
+      ).innerHTML = `<h1> ${right}/${total}</h2>`;
+    });
+
+    // TIMER
     function startTimer(duration) {
       let timer = duration;
       let minutes;
