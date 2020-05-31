@@ -9,6 +9,7 @@ const api = new Trivia();
 const questionNum = +sessionStorage.getItem("Questions");
 const categoryNum = +sessionStorage.getItem("category");
 const difficulty = sessionStorage.getItem("difficulty");
+const allotedtime = sessionStorage.getItem("allotedtime");
 
 // GET CATEGORY
 api
@@ -33,7 +34,7 @@ api
     `https://opentdb.com/api.php?amount=${questionNum}&category=${categoryNum}&difficulty=${difficulty}&type=multiple`
   )
   .then((data) => {
-    let output = "You're up";
+    let output = "";
     let opt = [];
     data.results.forEach((element) => {
       let options = "";
@@ -79,30 +80,43 @@ api
       });
     });
 
-    document.querySelector("#" + next).innerHTML = document.querySelector(
-      "#quiz"
-    ).innerHTML = output;
+    document.querySelector("#quiz").innerHTML = output;
 
-    // let time = (questionNum * 30000) / 1000;
-    // let countDown = new Date().setMinutes(12);
-    // let now = new Date().setMinutes(00);
+    function startTimer(duration) {
+      let timer = duration;
+      let minutes;
+      let seconds;
+      setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
 
-    // let clock = setInterval(() => {
-    //   let diff = countDown - now;
-    //   let minute = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    //   let second = Math.floor((diff % (1000 * 60)) / 1000);
-    //   timer = `${minute}:${second}`;
-    //   console.log(timer);
-    // }, 1000);
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
 
-    // setTimeout(() => {
-    //   clearInterval(clock);
-    //   document.querySelector("#quiz").remove();
-    //   document.querySelector(
-    //     "#result"
-    //   ).innerHTML = `<h1> ${right}/${total}</h2>`;
-    // }, 30000 * questionNum);
+        document.querySelector(".timer").innerHTML = minutes + ":" + seconds;
 
+        if (--timer < 0) {
+          timer = duration;
+        }
+      }, 1000);
+    }
+
+    let time = 60 * allotedtime;
+    startTimer(time);
+
+    setTimeout(() => {
+      document.querySelector("#quiz").remove();
+      document.querySelector(
+        "#result"
+      ).innerHTML = `<h1> ${right}/${total}</h2>`;
+    }, 30000 * questionNum);
+
+    7;
+
+    // RELOAD RESET
+    if (performance.navigation.type === 1) {
+      window.location.replace("/index.html");
+    }
     // GET SELECTED
 
     // GET ANSWER
@@ -115,9 +129,13 @@ document.querySelector("form").addEventListener("submit", (e) => {
   let inputNumber = +document.querySelector("#inputNumber").value;
   let category = +document.querySelector("#category").value;
   let difficulty = document.querySelector("#difficulty").value;
+  let allotedtime = Math.floor(
+    (document.querySelector("#inputNumber").value * 30000) / 1000 / 60
+  );
   sessionStorage.setItem("Questions", inputNumber);
   sessionStorage.setItem("category", category);
   sessionStorage.setItem("difficulty", difficulty);
+  sessionStorage.setItem("allotedtime", allotedtime);
   window.location.href = "/quiz.html";
 
   e.preventDefault();
@@ -143,23 +161,3 @@ document.querySelector("#inputNumber").addEventListener("blur", () => {
     (document.querySelector("#inputNumber").value * 30000) / 1000 / 60
   )} minute(s) to take this quiz`;
 });
-
-
-
-// let time = (questionNum * 30000) / 1000;
-// let countDown = new Date().setMinutes(12);
-// let now = new Date().setMinutes(00);
-
-// let clock = setInterval(() => {
-//   let diff = countDown - now;
-//   let minute = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-//   let second = Math.floor((diff % (1000 * 60)) / 1000);
-//   timer = `${minute}:${second--}`;
-//   console.log(timer);
-// }, 1000);
-
-// setTimeout(() => {
-//   clearInterval(clock);
-//   document.querySelector("#quiz").remove();
-//   document.querySelector("#result").innerHTML = `<h1> ${right}/${total}</h2>`;
-// }, 2000);
