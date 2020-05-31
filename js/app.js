@@ -73,15 +73,11 @@ api
           // let eval;
 
           if (e.target.textContent === element.correct_answer) {
-            // while (
-            //   right <= +e.target.parentElement.parentElement.getAttribute("id")
-            // ) {
             if (
               right < +e.target.parentElement.parentElement.getAttribute("id")
             ) {
               right++;
             }
-            // }
           } else {
             if (
               wrong < +e.target.parentElement.parentElement.getAttribute("id")
