@@ -18,7 +18,8 @@ body {
 
 h1 {
   font-size: 52px;
-  padding: 20px 0px;
+  padding-top: 60px;
+  padding-bottom: 10px;
 }
 
 p {
@@ -71,7 +72,7 @@ a {
   font-weight: 100;
   padding: 12px;
   border: 1px solid #848485;
-  font-size: 18px;
+  font-size: 16px;
   margin: 10px 20px 0 0;
 }
 
@@ -89,6 +90,10 @@ a {
   font-size: 16px;
   margin: 10px 0px;
   cursor: pointer;
+}
+
+#btnSubmit {
+  margin-top: -20px;
 }
 
 /* NAVIGATION */
@@ -192,6 +197,7 @@ nav ul li:hover {
   height: 80vh;
   justify-content: center;
   align-items: flex-start;
+  padding-bottom: 10px;
 }
 
 /* QUESTION */
@@ -238,7 +244,7 @@ option {
 .timer {
   position: fixed;
   text-align: center;
-  top: 70px;
+  top: 40px;
   width: 100vw;
 }
 
@@ -272,22 +278,23 @@ option {
   text-transform: uppercase;
   font-weight: 800;
 }
-footer {
+.footer {
   position: absolute;
   bottom: 0;
   text-align: center;
-  right: 0;
+  /* right: 0; */
+  width: 100vw;
   z-index: 0;
 }
 
-footer p,
-footer a {
+p.footer,
+.footer a {
   text-align: center;
   font-size: 16px;
   color: #ffffff;
 }
 
-.opt{
+.opt {
   list-style: none;
   display: block;
   border: 2px solid #858585;
@@ -296,5 +303,4 @@ footer a {
   max-width: 800px;
   cursor: pointer;
   transition: background 0.3s, transform 0.3s;
-  
 }
