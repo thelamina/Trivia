@@ -1,7 +1,6 @@
 const api = new Trivia();
 // GET NUMBER
-// let inputNumber = +document.querySelector("#inputNumber").value;
-// let category = +document.querySelector("#category").value;
+
 
 // sessionStorage.setItem("Questions", inputNumber);
 // sessionStorage.setItem("category", category);
